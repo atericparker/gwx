@@ -1,0 +1,488 @@
+140015430  long CConfigFileInfoT<class CIUnknownImpl<struct IUnknown,struct IUnknown,struct IUnknown,struct IUnknown,struct IUnknown> >::GetConsolidatedPhase(CConfigFileInfoT<class CIUnknownImpl<struct IUnknown,struct IUnknown,struct IUnknown,struct IUnknown,struct IUnknown> >* this, _Phase* arg2)
+
+14001544d      unsigned long BufferType_13 = 0
+14001544f      BufferType = 0
+140015466      BufferType_11 = 0
+140015469      long result_1 = CRegUtilT<unsigned long,struct CRegType,0,0>::CreateOrOpenKey(-0xffffffff80000002, u"SOFTWARE\Microsoft\Windows\Curre…")
+14001546e      long result = result_1
+14001546e      
+140015472      if (result_1 s>= 0)
+140015491          result_1 = CRegUtilT<unsigned long,struct CRegType,0,0>::ValueExists(-0xffffffff80000002, u"SOFTWARE\Microsoft\Windows\Curre…", u"TrayShown", &BufferType)
+140015496          result = result_1
+140015496          
+14001549a          if (result_1 s< 0)
+140015476              CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_1)
+14001549a          else
+14001549f              if (BufferType == 0)
+14001549f                  goto label_1400154cb
+14001549f              
+1400154b2              result_1 = CRegUtilT<unsigned long,struct CRegType,0,0>::GetValue(-0xffffffff80000002, u"SOFTWARE\Microsoft\Windows\Curre…", u"TrayShown", &BufferType_11)
+1400154b7              result = result_1
+1400154b7              
+1400154bb              if (result_1 s< 0)
+140015476                  CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_1)
+1400154bb              else
+1400154bd                  BufferType_13 = BufferType_11
+1400154cb                  label_1400154cb:
+1400154cb                  int32_t var_58
+1400154cb                  int32_t var_44
+1400154cb                  int32_t* r9_3
+1400154cb                  result_1, r9_3 = CConfigFileInfoT<class C...uct IUnknown> >::CheckAppraiserPrereq(this, &var_58, &var_44)
+1400154d0                  result = result_1
+1400154d0                  
+1400154d4                  if (result_1 s< 0)
+140015476                      CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_1)
+1400154d4                  else
+1400154d8                      unsigned long BufferType_14
+1400154d8                      
+1400154d8                      if (BufferType_13 != 0)
+140015501                          BufferType_14 = 0
+140015516                          label_140015516:
+140015516                          BufferType = 1
+140015519                          long rax
+140015519                          int32_t* r9_4
+140015519                          rax, r9_4 = CConfigFileInfoT<class C...ruct IUnknown> >::GetBoolFromImageXml(this, u"CONFIG\EnableDomainJoined", &BufferType, r9_3)
+14001551e                          unsigned long BufferType_1 = BufferType
+14001552e                          BufferType = 1
+14001552e                          
+140015531                          if (rax s< 0)
+140015531                              BufferType_1 = 1
+140015531                          
+140015534                          BufferType_11 = BufferType_1
+14001553a                          long rax_1
+14001553a                          int32_t* r9_5
+14001553a                          rax_1, r9_5 = CConfigFileInfoT<class C...ruct IUnknown> >::GetBoolFromImageXml(this, u"CONFIG\EnableEnterpriseSku", &BufferType, r9_4)
+14001553f                          unsigned long BufferType_2 = BufferType
+14001554f                          BufferType = 1
+14001554f                          
+140015552                          if (rax_1 s< 0)
+140015552                              BufferType_2 = 1
+140015552                          
+14001555b                          long rax_2
+14001555b                          int32_t* r9_6
+14001555b                          rax_2, r9_6 = CConfigFileInfoT<class C...ruct IUnknown> >::GetBoolFromImageXml(this, u"CONFIG\EnableMdmManaged", &BufferType, r9_5)
+140015560                          unsigned long BufferType_3 = BufferType
+140015570                          BufferType = 1
+140015570                          
+140015573                          if (rax_2 s< 0)
+140015573                              BufferType_3 = 1
+140015573                          
+140015576                          unsigned long BufferType_10 = BufferType_3
+14001557c                          long rax_3 = CConfigFileInfoT<class C...ruct IUnknown> >::GetBoolFromImageXml(this, u"CONFIG\EnableMLCheck", &BufferType, r9_6)
+140015581                          uint64_t BufferType_4 = zx.q(BufferType)
+140015591                          BufferType = 0
+140015591                          
+140015594                          if (rax_3 s< 0)
+140015594                              BufferType_4 = 1
+140015594                          
+140015597                          int32_t var_48 = BufferType_4.d
+14001559a                          long result_2
+14001559a                          int64_t rcx_7
+14001559a                          result_2, rcx_7 = CRegUtilT<uint16_t* __ptr64,struct CRegType,0,0>::KeyExists(BufferType_4, u"Software\Microsoft\Windows\Curre…", &BufferType)
+1400155a2                          result = result_2
+1400155a6                          unsigned long BufferType_8
+1400155a6                          
+1400155a6                          if (result_2 s>= 0)
+1400155b5                              BufferType_8 = BufferType
+1400155b5                              
+1400155bc                              if (BufferType_8 != 0)
+1400155c5                                  unsigned long BufferType_15
+1400155c5                                  
+1400155c5                                  if ((Microsoft_Windows_GWX_InsEnableBits & 4) == 0)
+1400155dc                                      BufferType_15 = 0
+1400155c5                                  else
+1400155d5                                      BufferType_15 = Template_z(rcx_7, &LogOperationalMessage, u"Machine is MDM managed")
+1400155d5                                  
+1400155e0                                  if (BufferType_15 != 0)
+1400155e5                                      BufferType_14 = zx.d(BufferType_15.w) | 0x80070000
+1400155e5                                      
+1400155ed                                      if (BufferType_15 s<= 0)
+1400155ed                                          BufferType_14 = BufferType_15
+1400155ed                                      
+1400155f2                                      if (BufferType_14 != 0)
+1400155f6                                          CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(BufferType_14)
+1400155f6                                  
+1400155fd                                  CChkMacroETWLoggerT<class CEmptyType>::LogHResultEvent(BufferType_14)
+140015602                                  BufferType_14 = 0
+1400155a6                          else
+1400155aa                              CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_2)
+1400155af                              BufferType_8 = BufferType
+1400155af                          
+140015606                          CChkMacroETWLoggerT<class CEmptyType>::LogHResultEvent(result)
+140015606                          
+14001560d                          if (result s>= 0)
+14001561a                              BufferType = 0
+14001561d                              long result_3
+14001561d                              int64_t rcx_13
+14001561d                              result_3, rcx_13 = IsWindowsLicensed(&BufferType)
+140015622                              result = result_3
+140015626                              unsigned long BufferType_7
+140015626                              
+140015626                              if (result_3 s>= 0)
+140015635                                  BufferType_7 = BufferType
+14001563c                                  unsigned long BufferType_16
+14001563c                                  
+14001563c                                  if (BufferType_7 == 0)
+140015657                                      if ((Microsoft_Windows_GWX_InsEnableBits & 4) == 0)
+14001566e                                          BufferType_16 = 0
+140015657                                      else
+140015667                                          BufferType_16 = Template_z(rcx_13, &LogOperationalMessage, u"Windows is not activated")
+14001563c                                  else if ((Microsoft_Windows_GWX_InsEnableBits & 4) == 0)
+14001566e                                      BufferType_16 = 0
+140015645                                  else
+140015667                                      BufferType_16 = Template_z(rcx_13, &LogOperationalMessage, u"Windows is activated")
+140015667                                  
+140015672                                  if (BufferType_16 != 0)
+140015677                                      BufferType_14 = zx.d(BufferType_16.w) | 0x80070000
+140015677                                      
+14001567f                                      if (BufferType_16 s<= 0)
+14001567f                                          BufferType_14 = BufferType_16
+14001567f                                      
+140015684                                      if (BufferType_14 != 0)
+140015688                                          CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(BufferType_14)
+140015688                                  
+14001568f                                  CChkMacroETWLoggerT<class CEmptyType>::LogHResultEvent(BufferType_14)
+140015694                                  BufferType_14 = 0
+140015626                              else
+14001562a                                  CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_3)
+14001562f                                  BufferType_7 = BufferType
+14001562f                              
+140015698                              CConfigFileInfoT<class CIUnknownImpl<struct IUnknown,struct IUnknown,struct IUnknown,struct IUnknown,struct IUnknown> >* rcx_18 = CChkMacroETWLoggerT<class CEmptyType>::LogHResultEvent(result)
+140015698                              
+14001569f                              if (result s< 0)
+140015476                                  CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result)
+14001569f                              else
+1400156a9                                  int32_t var_50
+1400156a9                                  result_1 = CConfigFileInfoT<class C...truct IUnknown> >::IsNonEnterpriseSku(this: rcx_18, &var_50)
+1400156ae                                  result = result_1
+1400156ae                                  
+1400156b2                                  if (result_1 s< 0)
+140015476                                      CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_1)
+1400156b2                                  else
+1400156c2                                      PWSTR lpNameBuffer = nullptr
+1400156c6                                      BufferType = 0
+1400156c9                                      uint32_t rax_4 = NetGetJoinInformation(lpServer: nullptr, &lpNameBuffer, &BufferType)
+1400156d1                                      long rbx
+1400156d1                                      unsigned long BufferType_9
+1400156d1                                      
+1400156d1                                      if (rax_4 != 0)
+1400156f6                                          rbx = zx.d(rax_4.w) | 0x80070000
+1400156f6                                          
+1400156fe                                          if (rax_4 s<= 0)
+1400156fe                                              rbx = rax_4
+1400156fe                                          
+140015703                                          if (rbx == 0)
+140015703                                              goto label_1400156d5
+140015703                                          
+140015707                                          CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(rbx)
+14001570c                                          BufferType_9 = BufferType
+1400156d1                                      else
+1400156d3                                          rbx = 0
+1400156d5                                          label_1400156d5:
+1400156d5                                          unsigned long BufferType_5 = BufferType
+1400156d5                                          
+1400156e6                                          if (BufferType_5 == 0 || BufferType_5 == 1 || BufferType_5 == 2)
+140015760                                              BufferType_9 = 0
+1400156e6                                          else if (BufferType_5 == 3)
+140015719                                              BufferType_9 = 1
+14001571f                                              unsigned long BufferType_17
+14001571f                                              
+14001571f                                              if ((Microsoft_Windows_GWX_InsEnableBits & 4) == 0)
+140015736                                                  BufferType_17 = 0
+14001571f                                              else
+14001572f                                                  BufferType_17 = Template_z(zx.q(BufferType_5 - 3), &LogOperationalMessage, u"Machine is domain joined")
+14001572f                                              
+14001573a                                              if (BufferType_17 != 0)
+14001573f                                                  BufferType_14 = zx.d(BufferType_17.w) | 0x80070000
+14001573f                                                  
+140015747                                                  if (BufferType_17 s<= 0)
+140015747                                                      BufferType_14 = BufferType_17
+140015747                                                  
+14001574c                                                  if (BufferType_14 != 0)
+140015750                                                      CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(BufferType_14)
+140015750                                              
+140015757                                              CChkMacroETWLoggerT<class CEmptyType>::LogHResultEvent(BufferType_14)
+14001575c                                              BufferType_14 = 0
+1400156ea                                          else
+1400156ec                                              rbx = -0x7fffbffb
+140015707                                              CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(rbx)
+14001570c                                              BufferType_9 = BufferType
+14001570c                                      
+140015765                                      int32_t* rdx_4 = CChkMacroETWLoggerT<class CEmptyType>::LogHResultEvent(rbx)
+14001576a                                      PWSTR Buffer = lpNameBuffer
+14001576a                                      
+140015771                                      if (Buffer != 0)
+140015773                                          rdx_4 = NetApiBufferFree(Buffer)
+140015773                                      
+14001577f                                      if (rbx s< 0)
+14001577f                                          BufferType_9 = 0
+14001577f                                      
+140015783                                      int64_t rcx_27
+140015783                                      result_1, rcx_27 = CConfigFileInfoT<class C...ct IUnknown> >::IsGwxDisabledByPolicy(this: &BufferType, rdx_4)
+140015788                                      result = result_1
+140015788                                      
+14001578c                                      if (result_1 s< 0)
+140015476                                          CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_1)
+14001578c                                      else if (BufferType != 0 || (BufferType_11 == 0 && BufferType_9 != 0) || (BufferType_2 == 0 && var_50 == 0))
+140015aea                                          label_140015aea:
+140015aea                                          long rax_8
+140015aea                                          
+140015aea                                          if ((Microsoft_Windows_GWX_InsEnableBits & 4) == 0)
+140015b01                                              rax_8 = 0
+140015aea                                          else
+140015afa                                              rax_8 = Template_z(rcx_27, &LogOperationalMessage, u"Config pre-req's/policy did not …")
+140015afa                                          
+140015b05                                          long rbx_2
+140015b05                                          
+140015b05                                          if (rax_8 != 0)
+140015b0e                                              rbx_2 = zx.d(rax_8.w) | 0x80070000
+140015b0e                                              
+140015b16                                              if (rax_8 s<= 0)
+140015b16                                                  rbx_2 = rax_8
+140015b16                                              
+140015b1b                                              if (rbx_2 != 0)
+140015b1f                                                  CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(rbx_2)
+140015b05                                          else
+140015b07                                              rbx_2 = 0
+140015b07                                          
+140015b26                                          CChkMacroETWLoggerT<class CEmptyType>::LogHResultEvent(rbx_2)
+140015b38                                          label_140015b38:
+140015b38                                          result_1 = CConfigFileInfoT<class C...truct IUnknown> >::GetPhaseDefinition(this, u"None", arg2)
+140015b3d                                          result = result_1
+140015b3d                                          
+140015b41                                          if (result_1 s< 0)
+140015476                                              CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_1)
+140015b41                                          else
+140015b47                                              result = 0
+1400157b1                                      else
+1400157ba                                          if (BufferType_10 != 0)
+1400157cd                                              if (var_48 != 0 && BufferType_7 == 0)
+1400157c8                                                  goto label_140015aea
+1400157ba                                          else if (BufferType_8 != 0 || (var_48 != 0 && BufferType_7 == 0))
+1400157bf                                              goto label_140015aea
+1400157bf                                          
+1400157eb                                          BufferType = 0
+1400157ee                                          long result_4
+1400157ee                                          struct HKEY__* rcx_28
+1400157ee                                          result_4, rcx_28 = CRegUtilT<unsigned long,struct CRegType,0,0>::KeyExists(-0xffffffff80000002, u"SOFTWARE\Microsoft\Windows\Curre…", &BufferType)
+1400157f6                                          result = result_4
+1400157f6                                          
+1400157fa                                          if (result_4 s< 0)
+140015843                                              CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_4)
+1400157fa                                          else if (BufferType == 0)
+140015855                                              BufferType_10 = BufferType_14
+140015800                                          else
+140015810                                              BufferType = 0
+140015814                                              result_4 = CRegUtilT<uint16_t* __ptr64,struct CRegType,0,0>::ValueExists(rcx_28, u"SOFTWARE\Microsoft\Windows\Curre…", u"ApplicableOSBuilds", &BufferType)
+140015819                                              result = result_4
+140015819                                              
+14001581d                                              if (result_4 s< 0)
+140015843                                                  CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_4)
+14001581d                                              else if (BufferType == 0)
+140015855                                                  BufferType_10 = BufferType_14
+140015823                                              else
+140015836                                                  result_4 = CRegUtilT<unsigned long,struct CRegType,0,0>::GetValue(-0xffffffff80000002, u"SOFTWARE\Microsoft\Windows\Curre…", u"ApplicableOSBuilds", &BufferType)
+14001583b                                                  result = result_4
+14001583b                                                  
+14001583f                                                  if (result_4 s>= 0)
+140015851                                                      BufferType_14.b = BufferType == 1
+140015855                                                      BufferType_10 = BufferType_14
+14001583f                                                  else
+140015843                                                      CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_4)
+140015843                                          
+14001585a                                          CChkMacroETWLoggerT<class CEmptyType>::LogHResultEvent(result)
+14001585a                                          
+140015861                                          if (result s< 0)
+140015476                                              CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result)
+140015861                                          else
+14001586d                                              result_1 = CConfigFileInfoT<class C...IUnknown,struct IUnknown> >::GetPhase(this, arg2)
+140015872                                              result = result_1
+140015872                                              
+140015876                                              if (result_1 s< 0)
+140015476                                                  CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_1)
+140015876                                              else
+14001587c                                                  uint16_t* rdx_6 = *arg2
+140015886                                                  BufferType_11 = 0
+14001588a                                                  enum eMachineReservationState* rdx_7
+14001588a                                                  result_1, rdx_7 = CConfigFileInfoT<class C...own> >::StringToConfigControlledPhase(this, rdx_6, &BufferType_11)
+14001588f                                                  result = result_1
+14001588f                                                  
+140015893                                                  if (result_1 s< 0)
+140015476                                                      CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_1)
+140015893                                                  else
+14001589d                                                      result_1 = CConfigFileInfoT<class C...nknown> >::GetMachineReservationState(this: &var_48, rdx_7)
+1400158a2                                                      result = result_1
+1400158a2                                                      
+1400158a6                                                      if (result_1 s< 0)
+140015476                                                          CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_1)
+1400158a6                                                      else
+1400158b6                                                          BufferType = 0
+1400158ba                                                          long result_5
+1400158ba                                                          struct HKEY__* rcx_34
+1400158ba                                                          result_5, rcx_34 = CRegUtilT<unsigned long,struct CRegType,0,0>::KeyExists(-0xffffffff80000002, u"SOFTWARE\Microsoft\Windows\Curre…", &BufferType)
+1400158bf                                                          result = result_5
+1400158c3                                                          unsigned long BufferType_6
+1400158c3                                                          
+1400158c3                                                          if (result_5 s< 0)
+14001590c                                                              CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_5)
+140015911                                                              BufferType_6 = BufferType
+1400158c3                                                          else if (BufferType == 0)
+140015916                                                              BufferType_6 = 0
+1400158c9                                                          else
+1400158d9                                                              BufferType = 0
+1400158dd                                                              result_5 = CRegUtilT<uint16_t* __ptr64,struct CRegType,0,0>::ValueExists(rcx_34, u"SOFTWARE\Microsoft\Windows\Curre…", u"OSUpgradeState", &BufferType)
+1400158e2                                                              result = result_5
+1400158e2                                                              
+1400158e6                                                              if (result_5 s< 0)
+14001590c                                                                  CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_5)
+140015911                                                                  BufferType_6 = BufferType
+1400158e6                                                              else if (BufferType == 0)
+140015916                                                                  BufferType_6 = 0
+1400158ec                                                              else
+1400158ff                                                                  result_5 = CRegUtilT<unsigned long,struct CRegType,0,0>::GetValue(-0xffffffff80000002, u"SOFTWARE\Microsoft\Windows\Curre…", u"OSUpgradeState", &BufferType)
+140015904                                                                  result = result_5
+140015904                                                                  
+140015908                                                                  if (result_5 s>= 0)
+140015911                                                                      BufferType_6 = BufferType
+140015908                                                                  else
+14001590c                                                                      CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_5)
+140015911                                                                      BufferType_6 = BufferType
+140015911                                                          
+14001591b                                                          CChkMacroETWLoggerT<class CEmptyType>::LogHResultEvent(result)
+14001591b                                                          
+140015922                                                          if (result s< 0)
+140015926                                                              CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result)
+140015926                                                          
+14001592d                                                          CChkMacroETWLoggerT<class CEmptyType>::LogHResultEvent(result)
+14001592d                                                          
+140015934                                                          if (result s< 0)
+140015476                                                              CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result)
+140015934                                                          else
+14001593a                                                              unsigned long BufferType_12 = BufferType_11
+14001593d                                                              int32_t rdx_8 = var_48
+140015940                                                              int32_t rax_5 = var_44
+140015943                                                              *(arg2 + 0x30) = rdx_8
+140015946                                                              *(arg2 + 0x34) = BufferType_6
+140015949                                                              *(arg2 + 0x38) = rax_5
+140015949                                                              
+14001595c                                                              if (BufferType_12 == 0 || BufferType_12 == 1)
+140015acf                                                                  *arg2
+140015adc                                                                  CAnticipationUxDiagnosti...,struct IUnknown> >::LogFormatMessage(u"Calculated ConsolidatedPhase is …", 0x2)
+14001595c                                                              else
+140015962                                                                  uint64_t rcx_40 = zx.q(BufferType_12 - 2)
+140015962                                                                  
+140015964                                                                  if (BufferType_12 == 2)
+140015a2e                                                                      uint16_t* rdx_10
+140015a2e                                                                      
+140015a2e                                                                      if (rdx_8 != 1)
+140015a5e                                                                          if (BufferType_10 != 0)
+140015a60                                                                              rdx_10 = u"AnticipationUX"
+140015a67                                                                              goto label_140015a3d
+140015a67                                                                          
+140015a50                                                                          label_140015a50:
+140015a50                                                                          
+140015a50                                                                          if (*(arg2 + 0x14) == 0)
+140015a69                                                                              *(arg2 + 0x38) = 2
+140015a50                                                                          else
+140015a55                                                                              *(arg2 + 0x14) = var_58
+140015a55                                                                          
+140015a71                                                                          long rax_7
+140015a71                                                                          
+140015a71                                                                          if (*(arg2 + 0x14) == 0)
+140015a8c                                                                              if ((Microsoft_Windows_GWX_InsEnableBits & 4) == 0)
+140015aa3                                                                                  rax_7 = 0
+140015a8c                                                                              else
+140015a9c                                                                                  rax_7 = Template_z(rcx_40, &LogOperationalMessage, u"Reservation is not-allowed from …")
+140015a71                                                                          else if ((Microsoft_Windows_GWX_InsEnableBits & 4) == 0)
+140015aa3                                                                              rax_7 = 0
+140015a7a                                                                          else
+140015a9c                                                                              rax_7 = Template_z(rcx_40, &LogOperationalMessage, u"Reservation is allowed from Appr…")
+140015a9c                                                                          
+140015aa8                                                                          long rdi_11
+140015aa8                                                                          
+140015aa8                                                                          if (rax_7 != 0)
+140015ab2                                                                              rdi_11 = zx.d(rax_7.w) | 0x80070000
+140015ab2                                                                              
+140015aba                                                                              if (rax_7 s<= 0)
+140015aba                                                                                  rdi_11 = rax_7
+140015aba                                                                              
+140015abf                                                                              if (rdi_11 != 0)
+140015ac3                                                                                  CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(rdi_11)
+140015aa8                                                                          else
+140015aaa                                                                              rdi_11 = 0
+140015aaa                                                                          
+140015aca                                                                          CChkMacroETWLoggerT<class CEmptyType>::LogHResultEvent(rdi_11)
+140015acf                                                                          *arg2
+140015adc                                                                          CAnticipationUxDiagnosti...,struct IUnknown> >::LogFormatMessage(u"Calculated ConsolidatedPhase is …", 0x2)
+140015a2e                                                                      else
+140015a30                                                                          rdx_10 = u"Reserved"
+140015a3d                                                                          label_140015a3d:
+140015a3d                                                                          result_1, rcx_40 = CConfigFileInfoT<class C...truct IUnknown> >::GetPhaseDefinition(this, rdx_10, arg2)
+140015a42                                                                          result = result_1
+140015a42                                                                          
+140015a46                                                                          if (result_1 s>= 0)
+140015a46                                                                              goto label_140015a50
+140015a46                                                                          
+140015476                                                                          CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_1)
+140015964                                                                  else if (rcx_40.d != 1 && rcx_40.d != 2)
+140015972                                                                      result = -0x7ff8fff3
+140015476                                                                      CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result)
+140015970                                                                  else if (BufferType_6 == 0)
+140015acf                                                                      *arg2
+140015adc                                                                      CAnticipationUxDiagnosti...,struct IUnknown> >::LogFormatMessage(u"Calculated ConsolidatedPhase is …", 0x2)
+14001597e                                                                  else
+140015987                                                                      uint16_t* rdx_9
+140015987                                                                      
+140015987                                                                      if (BufferType_6 s> 5)
+1400159d8                                                                          if (BufferType_6 == 6)
+140015a0a                                                                              rdx_9 = u"UpgradeSetupCompatBlock"
+1400159d8                                                                          else if (BufferType_6 == 7)
+140015a01                                                                              rdx_9 = u"UpgradeSetupRolledBack"
+1400159dc                                                                          else if (BufferType_6 == 8)
+1400159f8                                                                              rdx_9 = u"UPgradeSetupFailed"
+1400159e0                                                                          else if (BufferType_6 == 9)
+1400159ef                                                                              rdx_9 = u"UpgradeSetupComplete"
+1400159e4                                                                          else
+1400159e6                                                                              rdx_9 = u"Invalid"
+140015987                                                                      else if (BufferType_6 == 5)
+1400159cc                                                                          rdx_9 = u"UpgradeReadySetupInProgress"
+140015989                                                                      else if (BufferType_6 == 0)
+1400159c3                                                                          rdx_9 = u"UpgradeNotStarted"
+14001598d                                                                      else if (BufferType_6 == 1)
+1400159ba                                                                          rdx_9 = u"UpgradeDetected"
+140015991                                                                      else if (BufferType_6 == 2)
+1400159b1                                                                          rdx_9 = u"UpgradeDownloadInProgress"
+140015995                                                                      else if (BufferType_6 == 3)
+1400159a8                                                                          rdx_9 = u"UpgradeDownloaded"
+140015999                                                                      else if (BufferType_6 != 4)
+1400159e6                                                                          rdx_9 = u"Invalid"
+14001599d                                                                      else
+14001599f                                                                          rdx_9 = u"UpgradeReadyToInstall"
+14001599f                                                                      
+140015a17                                                                      result_1 = CConfigFileInfoT<class C...truct IUnknown> >::GetPhaseDefinition(this, rdx_9, arg2)
+140015a1c                                                                      result = result_1
+140015a1c                                                                      
+140015a20                                                                      if (result_1 s>= 0)
+140015acf                                                                          *arg2
+140015adc                                                                          CAnticipationUxDiagnosti...,struct IUnknown> >::LogFormatMessage(u"Calculated ConsolidatedPhase is …", 0x2)
+140015a20                                                                      else
+140015476                                                                          CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_1)
+14001560d                          else
+140015476                              CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result)
+1400154d8                      else
+1400154e1                          result_1, r9_3 = CConfigFileInfoT<class C...Unknown> >::CheckDownloadPrerequisite(this, &BufferType)
+1400154e6                          BufferType_14 = 0
+1400154e8                          result = result_1
+1400154e8                          
+1400154ec                          if (result_1 s>= 0)
+1400154fa                              if (BufferType == 0 || var_58 == 0)
+1400154f1                                  goto label_140015b38
+1400154f1                              
+1400154f1                              goto label_140015516
+1400154f1                          
+140015476                          CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_1)
+140015472      else
+140015476          CBreakOnFailureT<class CEmptyType>::CheckToBreakOnFailure(result_1)
+140015476      
+140015b4b      CChkMacroETWLoggerT<class CEmptyType>::LogHResultEvent(result)
+140015b69      return result
